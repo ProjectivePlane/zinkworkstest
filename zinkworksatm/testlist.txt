@@ -1,0 +1,36 @@
+This is a list of tests I had drawn up but not implemented due to focusing
+on an issue with the database not populating.
+GET /balance/{id}/{pin}
+id=123456789
+pin=1234
+Expect http CODE 200, message with maximum withdrawal amount
+(On initial call, give balance 800)
+id=987654321
+pin=4321
+Expect http CODE 200, message with maximum withdrawal amount
+(On initial call, give balance 1230)
+id=123456789
+pin=0000
+Expect http CODE 401, message saying not authorised to access
+id=987654321
+pin=4321
+Expect http CODE 401, message saying not authorised to access
+
+POST /cash/{id}/{pin}/{amount}
+id=123456789
+pin=1234
+amount=100
+Expect http code 200, remaining balance
+id=987654321
+pin=4321
+amount=100
+Expect http code 200, remaining balance
+POST /cash/{id}/{pin}/{amount}
+id=123456789
+pin=1234
+amount=1000000
+Expect http code 403, remaining balance
+id=987654321
+pin=4321
+amount=1000000
+Expect http code 403, remaining balance
