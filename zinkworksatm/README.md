@@ -2,6 +2,7 @@
 To start the application:
 mvn spring-boot:run
 
+
 #Status
 I was refactoring code when I discovered that the database I was using
 did not seem to be populated - this results in the endpoints below
